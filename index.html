@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Credit Card Form</title>
+</head>
+<body>
+    <form id="credit-card-form" action="/submit" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="card-number">Card Number:</label>
+        <input type="text" id="card-number" name="card_number" required><br>
+        <label for="expiration">Expiration:</label>
+        <input type="text" id="expiration" name="expiration" required><br>
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" required><br>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.getElementById("credit-card-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+            var form = event.target;
+            var formData = new FormData(form);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/submit");
+            xhr.send(formData);
+        });
+    </script>
+</body>
+</html>
